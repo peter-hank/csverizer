@@ -1,10 +1,10 @@
 require 'active_support/inflections'
 
 module ActiveModel
-  module CsvSerializerFactory
+  module CSVerizerFactory
     def self.new(object, options = {})
-      return ActiveModel::CsvSerializer.new(nil) if object.nil?
-      klass = object.model_name.name + 'CsvSerializer'
+      return ActiveModel::CSVerizer.new(nil) if object.nil?
+      klass = object.model_name.name + 'CSVerizer'
       klass.constantize.new(object, options)
     end
   end

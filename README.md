@@ -1,4 +1,4 @@
-# ActiveModelCsvSerializers
+# CSVerizer
 
 `ActiveModel::Serializers` style CSV serialization.
 
@@ -6,7 +6,7 @@
 
 Add this line to your application's Gemfile:
 
-    gem 'active_model_csv_serializers'
+    gem 'csverizer'
 
 And then execute:
 
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install active_model_csv_serializers
+    $ gem install csverizer
 
 ## Usage
 
@@ -22,10 +22,10 @@ Or install it yourself as:
 class Post
   include ActiveModel::Serialization
   attr_accessor :title, :body
-  def attributes; end # not necessary for ActiveModel::CsvSerializer
+  def attributes; end # not necessary for ActiveModel::CSVerizer
 end
 
-class PostSerializer < ActiveModel::CsvSerializer
+class PostSerializer < ActiveModel::CSVerizer
   attributes :title, :body
 end
 ```

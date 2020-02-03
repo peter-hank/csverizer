@@ -5,7 +5,7 @@ require 'rspec/rails'
 require 'pry'
 
 require 'active_model'
-require 'active_model_csv_serializers'
+require 'csverizer'
 
 class DummyApp < Rails::Application
   config.eager_load = false
@@ -26,14 +26,14 @@ class Post
   attr_accessor :name, :body, :comments, :author, :category
 end
 
-class PostCsvSerializer < ActiveModel::CsvSerializer
+class PostCSVerizer < ActiveModel::CSVerizer
   attributes :name, :body
   has_many :comments
   has_one :author
   has_one :category
 end
 
-class Post2CsvSerializer < PostCsvSerializer
+class Post2CSVerizer < PostCSVerizer
   attributes :name, :body
 
   def name
@@ -41,7 +41,7 @@ class Post2CsvSerializer < PostCsvSerializer
   end
 end
 
-class Post3CsvSerializer < ActiveModel::CsvSerializer
+class Post3CSVerizer < ActiveModel::CSVerizer
   attributes :name
   attributes :body
 end
@@ -55,7 +55,7 @@ class Comment
   attr_accessor :text
 end
 
-class CommentCsvSerializer < ActiveModel::CsvSerializer
+class CommentCSVerizer < ActiveModel::CSVerizer
   attributes :text
 end
 
@@ -75,7 +75,7 @@ class Author
   attr_accessor :name, :category
 end
 
-class AuthorCsvSerializer < ActiveModel::CsvSerializer
+class AuthorCSVerizer < ActiveModel::CSVerizer
   attributes :name
 
   has_one :category
@@ -90,6 +90,6 @@ class Category
   attr_accessor :name
 end
 
-class CategoryCsvSerializer < ActiveModel::CsvSerializer
+class CategoryCSVerizer < ActiveModel::CSVerizer
   attributes :name
 end

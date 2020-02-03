@@ -10,9 +10,9 @@ module ActiveModel
     end
 
     def to_a
-      return ActiveModel::CsvSerializer.new(nil).to_a if @objects.nil?
+      return ActiveModel::CSVerizer.new(nil).to_a if @objects.nil?
       @objects.collect do |object|
-        serializer = @each_serializer || ActiveModel::CsvSerializerFactory
+        serializer = @each_serializer || ActiveModel::CSVerizerFactory
         serializer.new(object, @options).to_a
       end
     end
@@ -23,7 +23,7 @@ module ActiveModel
 
     def attribute_names
       return [] unless @objects
-      serializer = @each_serializer || ActiveModel::CsvSerializerFactory
+      serializer = @each_serializer || ActiveModel::CSVerizerFactory
       serializer.new(@objects.first, @options).attribute_names
     end
   end

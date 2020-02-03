@@ -4,8 +4,8 @@ describe 'has_one' do
   let(:post) { Post.new(name: 'a', body: 'b', author: author) }
   let(:author) { Author.new(name: 'd') }
   let(:category) { Category.new(name: 'e') }
-  let(:post_serializer) { PostCsvSerializer.new(post) }
-  let(:author_serializer) { AuthorCsvSerializer.new(author) }
+  let(:post_serializer) { PostCSVerizer.new(post) }
+  let(:author_serializer) { AuthorCSVerizer.new(author) }
 
   it 'appends the associated objects csv data to this' do
     csv = post_serializer.to_csv

@@ -9,7 +9,7 @@ describe 'ArraySerializer' do
   it 'renders csv using specified serializer' do
     array_serializer = ActiveModel::CsvArraySerializer.new(
       comments,
-      each_serializer: CommentCsvSerializer
+      each_serializer: CommentCSVerizer
     )
     csv = array_serializer.to_csv
 
