@@ -18,7 +18,10 @@ module ActiveModel
     end
 
     def to_csv
-      to_a.to_csv
+      CSV.generate do |csv|
+        csv << attribute_names
+        to_a.each { |record| csv << record.first }
+      end
     end
 
     def attribute_names
