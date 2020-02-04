@@ -22,6 +22,7 @@ describe 'csv renderer', type: :controller do
 
   it 'renders an array' do
     get :array
+
     expect(response.body).to include('b')
     expect(response.body).to include('c')
   end

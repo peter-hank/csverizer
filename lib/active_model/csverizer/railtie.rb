@@ -7,7 +7,7 @@ class ActiveModel::CSVerizer::Railtie < Rails::Railtie
           serializer =
             if object.respond_to?(:each)
               hash = options.slice(:each_serializer)
-              ActiveModel::CSVerizer.new(object, hash)
+              ActiveModel::CsvArraySerializer.new(object, hash)
             else
               hash = options.slice(:serializer)
               ActiveModel::CSVerizerFactory.new(object, hash)
@@ -20,7 +20,7 @@ class ActiveModel::CSVerizer::Railtie < Rails::Railtie
         end
         send_data(
           data,
-          type: Mime::CSV,
+          type: Mime[:csv],
           disposition: "attachment; filename=#{filename}.csv"
         )
       end
