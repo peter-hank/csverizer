@@ -9,7 +9,7 @@ describe 'has_many' do
       Comment.new(text: 'e')
     ]
   end
-  let(:serializer) { PostCSVerizer.new(post, root: false) }
+  let(:serializer) { PostCsverizer.new(post, root: false) }
 
   it 'appends associated objects csv to multiple copies of this' do
     csv = serializer.to_csv

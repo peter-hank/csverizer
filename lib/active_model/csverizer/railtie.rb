@@ -1,4 +1,4 @@
-class ActiveModel::CSVerizer::Railtie < Rails::Railtie
+class ActiveModel::Csverizer::Railtie < Rails::Railtie
   initializer 'csverizer' do
     ActiveSupport.on_load(:action_controller) do
       ActionController::Renderers.add :csv do |object, options|
@@ -10,7 +10,7 @@ class ActiveModel::CSVerizer::Railtie < Rails::Railtie
               ActiveModel::CsvArraySerializer.new(object, hash)
             else
               hash = options.slice(:serializer)
-              ActiveModel::CSVerizerFactory.new(object, hash)
+              ActiveModel::CsverizerFactory.new(object, hash)
             end
           data = serializer.to_csv
         # TODO: probably should implement a specialized exception for this

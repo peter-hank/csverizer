@@ -1,7 +1,7 @@
 require 'csv'
 
 module ActiveModel
-  class CSVerizer
+  class Csverizer
     @_attributes = []
     @associations = []
     @root = true
@@ -23,7 +23,7 @@ module ActiveModel
     def self.has_one(associated)
       @associations << {
         associated: associated,
-        serializer: ActiveModel::CSVerizerFactory
+        serializer: ActiveModel::CsverizerFactory
       }
     end
 

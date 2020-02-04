@@ -1,4 +1,4 @@
-# CSVerizer
+# Csverizer
 
 `ActiveModel::Serializers` style CSV serialization.
 
@@ -22,10 +22,10 @@ Or install it yourself as:
 class Post
   include ActiveModel::Serialization
   attr_accessor :title, :body
-  def attributes; end # not necessary for ActiveModel::CSVerizer
+  def attributes; end # not necessary for ActiveModel::Csverizer
 end
 
-class PostSerializer < ActiveModel::CSVerizer
+class PostSerializer < ActiveModel::Csverizer
   attributes :title, :body
 end
 ```

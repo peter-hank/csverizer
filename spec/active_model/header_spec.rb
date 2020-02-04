@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'headers' do
   it 'includes headers based on attribute names by default' do
     post = Post.new(name: 'Samwise', body: 'Hobbit extraordinaire.')
-    serializer = PostCSVerizer.new(post)
+    serializer = PostCsverizer.new(post)
     csv = serializer.to_csv
 
     expect(csv).to include('name')
@@ -13,7 +13,7 @@ describe 'headers' do
   context 'when root option set to false during serializer instantiation' do
     it 'does not include headers' do
       post = Post.new(name: 'Samwise', body: 'Hobbit extraordinaire.')
-      serializer = PostCSVerizer.new(post, root: false)
+      serializer = PostCsverizer.new(post, root: false)
       csv = serializer.to_csv
 
       expect(csv).to_not include('name')
@@ -22,12 +22,12 @@ describe 'headers' do
   end
 
   context 'when root set to false during class definition' do
-    before { PostCSVerizer.root = false }
-    after { PostCSVerizer.root = true }
+    before { PostCsverizer.root = false }
+    after { PostCsverizer.root = true }
 
     it 'does not include headers' do
       post = Post.new(name: 'Samwise', body: 'Hobbit extraordinaire.')
-      serializer = PostCSVerizer.new(post, root: false)
+      serializer = PostCsverizer.new(post, root: false)
       csv = serializer.to_csv
 
       expect(csv).to_not include('name')
@@ -36,12 +36,12 @@ describe 'headers' do
   end
 
   context 'when parent serializer root set to false' do
-    before { ActiveModel::CSVerizer.root = false }
-    after { ActiveModel::CSVerizer.root = true }
+    before { ActiveModel::Csverizer.root = false }
+    after { ActiveModel::Csverizer.root = true }
 
     it 'does not include headers' do
       post = Post.new(name: 'Samwise', body: 'Hobbit extraordinaire.')
-      serializer = PostCSVerizer.new(post, root: false)
+      serializer = PostCsverizer.new(post, root: false)
       csv = serializer.to_csv
 
       expect(csv).to_not include('name')
@@ -53,7 +53,7 @@ describe 'headers' do
     it 'renders associated attributes prepended with its name' do
       category = Category.new(name: 'a')
       author = Author.new(name: 'b', category: category)
-      serializer = AuthorCSVerizer.new(author)
+      serializer = AuthorCsverizer.new(author)
       csv = serializer.to_csv
 
       expect(csv).to include('name')
@@ -66,7 +66,7 @@ describe 'headers' do
       category = Category.new(name: 'a')
       author = Author.new(name: 'b', category: category)
       post = Post.new(name: 'a', body: 'b', author: author)
-      serializer = PostCSVerizer.new(post)
+      serializer = PostCsverizer.new(post)
       csv = serializer.to_csv
 
       expect(csv).to include('name')
@@ -84,7 +84,7 @@ describe 'headers' do
         Comment.new(text: 'e')
       ]
       post = Post.new(name: 'a', body: 'b', comments: comments)
-      serializer = PostCSVerizer.new(post)
+      serializer = PostCsverizer.new(post)
       csv = serializer.to_csv
 
       expect(csv).to include('name')

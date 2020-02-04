@@ -26,14 +26,14 @@ class Post
   attr_accessor :name, :body, :comments, :author, :category
 end
 
-class PostCSVerizer < ActiveModel::CSVerizer
+class PostCsverizer < ActiveModel::Csverizer
   attributes :name, :body
   has_many :comments
   has_one :author
   has_one :category
 end
 
-class Post2CSVerizer < PostCSVerizer
+class Post2Csverizer < PostCsverizer
   attributes :name, :body
 
   def name
@@ -41,7 +41,7 @@ class Post2CSVerizer < PostCSVerizer
   end
 end
 
-class Post3CSVerizer < ActiveModel::CSVerizer
+class Post3Csverizer < ActiveModel::Csverizer
   attributes :name
   attributes :body
 end
@@ -55,7 +55,7 @@ class Comment
   attr_accessor :text
 end
 
-class CommentCSVerizer < ActiveModel::CSVerizer
+class CommentCsverizer < ActiveModel::Csverizer
   attributes :text
 end
 
@@ -75,7 +75,7 @@ class Author
   attr_accessor :name, :category
 end
 
-class AuthorCSVerizer < ActiveModel::CSVerizer
+class AuthorCsverizer < ActiveModel::Csverizer
   attributes :name
 
   has_one :category
@@ -90,6 +90,6 @@ class Category
   attr_accessor :name
 end
 
-class CategoryCSVerizer < ActiveModel::CSVerizer
+class CategoryCsverizer < ActiveModel::Csverizer
   attributes :name
 end

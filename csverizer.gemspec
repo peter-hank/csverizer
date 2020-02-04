@@ -5,7 +5,7 @@ require 'active_model/csverizer/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'csverizer'
-  spec.version       = ActiveModel::CSVerizer::VERSION
+  spec.version       = ActiveModel::Csverizer::VERSION
   spec.authors       = ['William Cunningham', 'Peter Hankiewicz']
   spec.email         = ['w.a.cunningham.ii@gmail.com', 'peter.hankiewicz@gmail.com']
   spec.summary       = 'Serialize models as CSV.'

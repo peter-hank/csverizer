@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'attributes' do
   it 'pulls attributes off associated model' do
     post = Post.new(name: 'Samwise', body: 'Hobbit extraordinaire.')
-    serializer = PostCSVerizer.new(post)
+    serializer = PostCsverizer.new(post)
     csv = serializer.to_csv
 
     expect(csv).to include(post.name)
@@ -12,7 +12,7 @@ describe 'attributes' do
 
   it 'favors methods defined on serializer' do
     post = Post.new(name: 'Samwise', body: 'Hobbit extraordinaire.')
-    serializer = Post2CSVerizer.new(post)
+    serializer = Post2Csverizer.new(post)
     csv = serializer.to_csv
 
     expect(csv).to include('pie')
@@ -22,7 +22,7 @@ describe 'attributes' do
 
   it 'allows attributes declaration to be split up' do
     post = Post.new(name: 'Samwise', body: 'Hobbit extraordinaire.')
-    serializer = Post3CSVerizer.new(post)
+    serializer = Post3Csverizer.new(post)
     csv = serializer.to_csv
 
     expect(csv).to include(post.name)
