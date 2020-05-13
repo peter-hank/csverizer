@@ -9,22 +9,19 @@ module ActiveModel
       @options = options
     end
 
-    def to_a
-      return ActiveModel::Csverizer.new(nil).to_a if @objects.nil?
-      @objects.collect do |object|
-        serializer = @each_serializer || ActiveModel::CsverizerFactory
-        serializer.new(object, @options).to_a
-      end
-    end
-
     def to_csv
-      to_a.to_csv
-    end
-
-    def attribute_names
-      return [] unless @objects
       serializer = @each_serializer || ActiveModel::CsverizerFactory
-      serializer.new(@objects.first, @options).attribute_names
+      serializer = serializer.new(@objects.first, @options)
+      options_hash = @options.slice(:serializer)
+
+      CSV.generate do |csv|
+        csv << serializer.attribute_names
+        serializer = @each_serializer || ActiveModel::CsverizerFactory
+
+        @objects.each do |record|
+          serializer.new(record, options_hash).to_a.each { |record| csv << record }
+        end
+      end
     end
   end
 end
